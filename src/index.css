@@ -1,0 +1,90 @@
+@import "tailwindcss";
+@config "../tailwind.config.ts";
+
+@theme {
+  --color-qing-paper: #f7f1e6;
+  --color-qing-ink: #355944;
+  --color-qing-text: #1f241f;
+  --color-qing-muted: #666b63;
+  --color-qing-cinnabar: #b85b46;
+  --color-qing-card: #fffdf8;
+  --font-song: "Noto Serif SC", "Songti SC", "STSong", "SimSun", serif;
+  --shadow-soft-ink: 0 18px 50px rgba(53, 89, 68, 0.14);
+  --shadow-seal: 0 10px 24px rgba(184, 91, 70, 0.22);
+}
+
+:root {
+  color: #1f241f;
+  background: #f7f1e6;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  scroll-behavior: smooth;
+  background:
+    radial-gradient(circle at 18% 8%, rgba(184, 91, 70, 0.08), transparent 26rem),
+    radial-gradient(circle at 80% 12%, rgba(53, 89, 68, 0.1), transparent 24rem),
+    #f7f1e6;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  overflow-x: hidden;
+  background: #f7f1e6;
+  color: #1f241f;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.paper-texture {
+  background:
+    radial-gradient(circle at 8% 16%, rgba(53, 89, 68, 0.075) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 68% 12%, rgba(184, 91, 70, 0.07) 0 1px, transparent 1.6px),
+    radial-gradient(circle at 38% 76%, rgba(31, 36, 31, 0.052) 0 1px, transparent 1.4px),
+    linear-gradient(135deg, rgba(255, 253, 248, 0.58), rgba(247, 241, 230, 0.35));
+  background-size:
+    28px 28px,
+    34px 34px,
+    22px 22px,
+    auto;
+}
+
+.hero-wash {
+  background:
+    radial-gradient(ellipse at 14% 88%, rgba(53, 89, 68, 0.2), transparent 34%),
+    radial-gradient(ellipse at 85% 35%, rgba(184, 91, 70, 0.1), transparent 28%),
+    linear-gradient(180deg, rgba(255, 253, 248, 0.9), rgba(247, 241, 230, 0.58));
+}
+
+.seal-text {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  letter-spacing: 0.08em;
+}
+
+.bottom-safe {
+  padding-bottom: calc(96px + env(safe-area-inset-bottom));
+}
