@@ -42,6 +42,7 @@ body {
   overflow-x: hidden;
   background: #f7f1e6;
   color: #1f241f;
+  font-family: "Noto Serif SC", "Songti SC", "STSong", "SimSun", serif;
 }
 
 button,
@@ -87,4 +88,12 @@ button {
 
 .bottom-safe {
   padding-bottom: calc(96px + env(safe-area-inset-bottom));
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }
