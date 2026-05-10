@@ -122,21 +122,21 @@ function copyText(text: string) {
 
 function Header() {
   return (
-    <header className="relative z-20 flex items-center justify-between px-5 pt-5">
-      <div className="flex min-w-0 items-center gap-3.5">
-        <div className="grid h-[58px] w-[58px] shrink-0 place-items-center rounded-full bg-qing-ink text-[30px] font-semibold text-qing-card shadow-[0_14px_30px_rgba(53,89,68,0.28)] ring-4 ring-white/55 font-song">
+    <header className="relative z-20 flex items-center justify-between px-5 pb-1 pt-[calc(env(safe-area-inset-top)+14px)]">
+      <div className="flex min-w-0 items-center gap-3">
+        <div className="grid h-11 w-11 shrink-0 place-items-center rounded-[15px] bg-[linear-gradient(145deg,#1f392b,#446b52)] text-[23px] font-medium text-qing-card shadow-[0_10px_24px_rgba(53,89,68,0.22)] ring-1 ring-white/60 font-song">
           青
         </div>
         <div className="min-w-0">
-          <p className="font-song text-[28px] font-bold leading-none tracking-[0.08em] text-qing-text">
+          <p className="font-song text-[21px] font-semibold leading-none tracking-[0.09em] text-qing-text">
             青越書畫
           </p>
-          <p className="mt-2 truncate text-[12px] tracking-[0.18em] text-qing-text/78 font-song">
+          <p className="mt-1.5 truncate text-[11px] tracking-[0.16em] text-qing-text/58 font-song">
             讓孩子在一筆一畫中成長
           </p>
         </div>
       </div>
-      <div className="grid h-[54px] w-[54px] shrink-0 place-items-center rounded-[12px] border-2 border-qing-cinnabar bg-qing-cinnabar/5 text-center text-[13px] font-bold leading-[1.05] text-qing-cinnabar shadow-seal font-song">
+      <div className="grid h-[42px] w-[42px] shrink-0 place-items-center rounded-[13px] border border-qing-cinnabar/60 bg-qing-card/58 text-center text-[11px] font-semibold leading-[1.08] text-qing-cinnabar shadow-[0_8px_20px_rgba(184,91,70,0.14)] backdrop-blur font-song">
         <span>
           青越
           <br />
@@ -244,11 +244,11 @@ function PrimaryButton({
       type={type}
       onClick={onClick}
       className={cn(
-        "inline-flex h-[58px] items-center justify-center gap-2 rounded-2xl px-4 text-[15px] font-semibold transition active:scale-[0.98] font-song",
+        "inline-flex h-[52px] items-center justify-center gap-1.5 whitespace-nowrap rounded-2xl px-4 text-[14px] font-semibold tracking-[0.02em] transition duration-200 ease-out hover:-translate-y-0.5 active:scale-[0.97] font-song",
         variant === "solid" &&
-          "bg-qing-ink text-qing-card shadow-[0_14px_28px_rgba(53,89,68,0.25)]",
+          "bg-[linear-gradient(135deg,#1f392b,#355944_58%,#4e745c)] text-qing-card shadow-[0_14px_28px_rgba(53,89,68,0.24)]",
         variant === "outline" &&
-          "border border-qing-ink bg-qing-card/75 text-qing-ink shadow-[0_12px_22px_rgba(53,89,68,0.08)]",
+          "border border-qing-ink/18 bg-white/72 text-qing-ink shadow-[0_12px_22px_rgba(53,89,68,0.08)] backdrop-blur",
         variant === "soft" &&
           "bg-qing-ink/8 text-qing-ink ring-1 ring-qing-ink/10",
         className,
@@ -269,17 +269,17 @@ function SectionTitle({
   onAction?: () => void;
 }) {
   return (
-    <div className="mb-4 flex items-center justify-between gap-4 px-5">
-      <div className="flex items-center gap-2.5">
-        <span className="h-8 w-2 rounded-full bg-[linear-gradient(180deg,#355944,#B85B46)] shadow-[0_6px_14px_rgba(53,89,68,0.24)]" />
-        <h2 className="font-song text-[27px] font-bold tracking-[0.06em] text-qing-text">
+    <div className="mb-3.5 flex items-center justify-between gap-4 px-5">
+      <div className="flex items-center gap-2">
+        <span className="h-6 w-1.5 rounded-full bg-[linear-gradient(180deg,#355944,#B85B46)] shadow-[0_6px_14px_rgba(53,89,68,0.18)]" />
+        <h2 className="font-song text-[21px] font-semibold tracking-[0.05em] text-qing-text">
           {title}
         </h2>
       </div>
       {action && (
         <button
           onClick={onAction}
-          className="inline-flex shrink-0 items-center gap-1 text-[14px] text-qing-text/80 font-song"
+          className="inline-flex shrink-0 items-center gap-0.5 text-[12px] text-qing-text/60 transition hover:text-qing-ink active:scale-[0.98] font-song"
         >
           {action}
           <ChevronRight size={16} />
@@ -301,7 +301,7 @@ function CourseIllustration({ tone }: { tone: CourseTone }) {
   };
 
   return (
-    <div className={cn("relative h-[118px] overflow-hidden rounded-t-[22px]", background[tone])}>
+    <div className={cn("relative h-[106px] overflow-hidden rounded-t-[22px]", background[tone])}>
       <div className="absolute inset-0 opacity-45 paper-texture" />
       <svg className="absolute inset-0 h-full w-full" viewBox="0 0 220 140" fill="none" aria-hidden="true">
         {tone === "pen" && (
@@ -347,36 +347,44 @@ function CourseIllustration({ tone }: { tone: CourseTone }) {
 
 function HomeHero({ go }: { go: (page: Page) => void }) {
   return (
-    <section className="relative mt-8 px-5 pb-2">
-      <InkLandscape className="right-0 top-[-8px] h-[220px] w-[260px] opacity-95" />
-      <div className="relative z-10 pt-8">
+    <section className="relative mt-5 px-5 pb-1">
+      <InkLandscape className="-right-8 top-[-16px] h-[210px] w-[260px] opacity-80" />
+      <div className="relative z-10 pt-7">
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="mb-4 inline-flex items-center gap-2 rounded-full border border-qing-ink/10 bg-white/45 px-3 py-1.5 text-[11px] tracking-[0.16em] text-qing-ink/78 shadow-[0_8px_20px_rgba(53,89,68,0.08)] backdrop-blur font-song"
+        >
+          <span className="h-1.5 w-1.5 rounded-full bg-qing-cinnabar/80" />
+          AI 招生 · 藝術啟蒙
+        </motion.div>
         <motion.h1
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.55 }}
-          className="max-w-[330px] whitespace-pre-line font-song text-[34px] font-bold leading-[1.35] tracking-[0.06em] text-qing-text"
+          className="max-w-[330px] whitespace-pre-line font-song text-[28px] font-medium leading-[1.52] tracking-[0.055em] text-qing-text"
         >
           在一筆一畫之間，
-          {"\n"}讓孩子看見
-          <span className="text-qing-ink">專注與審美</span>。
+          {"\n"}讓孩子看見專注與審美。
         </motion.h1>
-        <div className="mt-4 flex w-[150px] items-center gap-3">
+        <div className="mt-4 flex w-[132px] items-center gap-3">
           <span className="h-px flex-1 bg-qing-text/22" />
           <span className="h-2 w-2 rounded-full border border-qing-cinnabar bg-qing-card" />
           <span className="h-px flex-1 bg-qing-text/22" />
         </div>
-        <p className="mt-6 max-w-[315px] font-song text-[15px] leading-8 tracking-[0.08em] text-qing-text/75">
+        <p className="mt-5 max-w-[305px] font-song text-[14px] leading-7 tracking-[0.075em] text-qing-text/68">
           承千年筆墨意蘊，陪孩子寫好第一筆。
           <br />
           在安靜的尺度中，開啟藝術啟蒙之窗。
         </p>
-        <div className="mt-8 grid grid-cols-[1.15fr_0.9fr] gap-4">
-          <PrimaryButton onClick={() => go("ai")} className="px-3 text-[14px]">
-            <MessageCircle size={22} />
-            立即諮詢 AI書畫顧問
+        <div className="mt-7 grid grid-cols-[1.08fr_0.92fr] gap-3">
+          <PrimaryButton onClick={() => go("ai")} className="px-2.5 text-[13px]">
+            <MessageCircle size={18} />
+            立即諮詢AI
           </PrimaryButton>
-          <PrimaryButton onClick={() => go("booking")} variant="outline" className="px-3 text-[14px]">
-            <CalendarCheck size={21} />
+          <PrimaryButton onClick={() => go("booking")} variant="outline" className="px-2.5 text-[13px]">
+            <CalendarCheck size={18} />
             預約藝術試課
           </PrimaryButton>
         </div>
@@ -392,49 +400,54 @@ function AiAdvisorCard({ go }: { go: (page: Page) => void }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.45 }}
       transition={{ duration: 0.45 }}
+      whileHover={{ y: -2 }}
+      whileTap={{ scale: 0.985 }}
       onClick={() => go("ai")}
-      className="relative mx-5 mt-8 flex min-h-[126px] w-[calc(100%-2.5rem)] items-center gap-4 overflow-hidden rounded-[24px] border border-qing-ink/10 bg-qing-card/74 p-5 text-left shadow-[0_16px_36px_rgba(53,89,68,0.16)] backdrop-blur"
+      className="relative mx-5 mt-7 flex min-h-[112px] w-[calc(100%-2.5rem)] items-center gap-3.5 overflow-hidden rounded-[24px] border border-white/70 bg-white/46 p-4 text-left shadow-[0_14px_34px_rgba(53,89,68,0.12)] ring-1 ring-qing-ink/5 backdrop-blur-xl"
     >
-      <BambooWash className="bottom-0 right-0 h-[132px] w-[175px] opacity-95" />
-      <div className="relative grid h-[72px] w-[72px] shrink-0 place-items-center rounded-full bg-white/82 shadow-[0_12px_24px_rgba(31,36,31,0.13)]">
-        <div className="grid h-[50px] w-[50px] place-items-center rounded-full bg-qing-ink text-qing-card">
-          <Bot size={28} />
+      <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,253,248,0.82),rgba(255,253,248,0.38)_48%,rgba(53,89,68,0.08))]" />
+      <BambooWash className="bottom-[-10px] right-[-16px] h-[128px] w-[170px] opacity-75" />
+      <div className="relative grid h-[62px] w-[62px] shrink-0 place-items-center rounded-[22px] bg-white/72 shadow-[0_12px_24px_rgba(31,36,31,0.10)] ring-1 ring-qing-ink/8">
+        <div className="grid h-[44px] w-[44px] place-items-center rounded-[17px] bg-[linear-gradient(145deg,#244332,#426b51)] text-qing-card shadow-[0_10px_18px_rgba(53,89,68,0.24)]">
+          <Bot size={23} strokeWidth={1.9} />
         </div>
       </div>
       <div className="relative min-w-0 flex-1">
-        <div className="flex items-center gap-2">
-          <h2 className="font-song text-[24px] font-bold tracking-[0.06em] text-qing-text">
+        <div className="flex items-center gap-1.5">
+          <h2 className="font-song text-[20px] font-semibold tracking-[0.055em] text-qing-text">
             AI 書畫顧問
           </h2>
           <Seal small>智能</Seal>
         </div>
-        <p className="mt-2 font-song text-[15px] leading-6 text-qing-text/72">
-          不知道孩子適合哪門課？先問問 AI，為您推薦最合適的課程。
+        <p className="mt-1.5 font-song text-[13px] leading-[1.75] text-qing-text/64">
+          30秒匹配孩子年齡、基礎與適合課程。
         </p>
       </div>
-      <ChevronRight className="relative shrink-0 text-qing-ink" size={26} />
+      <span className="relative grid h-8 w-8 shrink-0 place-items-center rounded-full bg-qing-ink/8 text-qing-ink">
+        <ChevronRight size={17} strokeWidth={2.1} />
+      </span>
     </motion.button>
   );
 }
 
 function HomeCourseCard({ course }: { course: Course }) {
   return (
-    <article className="relative w-[178px] shrink-0 overflow-hidden rounded-[20px] border border-qing-ink/10 bg-qing-card shadow-[0_12px_28px_rgba(53,89,68,0.16)]">
+    <article className="relative w-[164px] shrink-0 overflow-hidden rounded-[22px] border border-white/65 bg-qing-card/82 shadow-[0_12px_26px_rgba(53,89,68,0.10)] ring-1 ring-qing-ink/5 backdrop-blur">
       <div className="relative">
         <CourseIllustration tone={course.tone} />
         <div className="absolute left-3 top-3">
           <Seal small>{course.tag}</Seal>
         </div>
       </div>
-      <div className="p-4">
-        <h3 className="font-song text-[20px] font-bold tracking-[0.05em] text-qing-text">
+      <div className="p-3.5">
+        <h3 className="font-song text-[18px] font-semibold tracking-[0.05em] text-qing-text">
           {course.title}
         </h3>
-        <p className="mt-2 line-clamp-2 min-h-[44px] font-song text-[13px] leading-[1.7] text-qing-text/70">
+        <p className="mt-1.5 line-clamp-2 min-h-[42px] font-song text-[12px] leading-[1.75] text-qing-text/64">
           {course.description.replace("，", "\n")}
         </p>
-        <p className="mt-3 flex items-center gap-1 text-[13px] text-qing-ink font-song">
-          <UserRound size={15} />
+        <p className="mt-2.5 flex items-center gap-1 text-[12px] text-qing-ink font-song">
+          <UserRound size={14} />
           {course.age}
         </p>
       </div>
@@ -447,9 +460,9 @@ function HomePage({ go }: { go: (page: Page) => void }) {
     <>
       <HomeHero go={go} />
       <AiAdvisorCard go={go} />
-      <section className="mt-8">
+      <section className="mt-7">
         <SectionTitle title="精品課程" action="查看全部課程" onAction={() => go("courses")} />
-        <div className="no-scrollbar flex gap-4 overflow-x-auto px-5 pb-4">
+        <div className="no-scrollbar flex snap-x gap-3.5 overflow-x-auto px-5 pb-4 pt-0.5 scroll-touch">
           {courses.slice(0, 3).map((course) => (
             <HomeCourseCard key={course.title} course={course} />
           ))}
@@ -461,36 +474,36 @@ function HomePage({ go }: { go: (page: Page) => void }) {
 
 function CourseGridCard({ course, go }: { course: Course; go: (page: Page) => void }) {
   return (
-    <article className="overflow-hidden rounded-[24px] border border-qing-ink/10 bg-qing-card shadow-[0_14px_28px_rgba(53,89,68,0.13)]">
+    <article className="overflow-hidden rounded-[24px] border border-white/65 bg-qing-card/84 shadow-[0_12px_26px_rgba(53,89,68,0.10)] ring-1 ring-qing-ink/5 backdrop-blur">
       <div className="relative">
         <CourseIllustration tone={course.tone} />
         <div className="absolute left-3 top-3">
           <Seal small>{course.tag}</Seal>
         </div>
       </div>
-      <div className="p-4">
-        <h3 className="font-song text-[20px] font-bold tracking-[0.05em] text-qing-text">
+      <div className="p-3.5">
+        <h3 className="font-song text-[18px] font-semibold tracking-[0.05em] text-qing-text">
           {course.title}
         </h3>
-        <p className="mt-2 min-h-[62px] font-song text-[13px] leading-[1.7] text-qing-text/70">
+        <p className="mt-1.5 min-h-[58px] font-song text-[12px] leading-[1.7] text-qing-text/64">
           {course.description}
         </p>
-        <p className="mt-2 flex items-center gap-1 text-[13px] text-qing-ink font-song">
+        <p className="mt-2 flex items-center gap-1 text-[12px] text-qing-ink font-song">
           <UserRound size={14} />
           {course.age}
         </p>
-        <div className="mt-4 grid grid-cols-2 gap-2">
+        <div className="mt-3 grid grid-cols-2 gap-2">
           <button
             type="button"
             onClick={() => go("ai")}
-            className="h-10 rounded-xl bg-qing-ink/8 text-[13px] font-semibold text-qing-ink font-song"
+            className="h-10 whitespace-nowrap rounded-xl bg-qing-ink/8 text-[12px] font-semibold text-qing-ink transition active:scale-[0.98] font-song"
           >
             查看詳情
           </button>
           <button
             type="button"
             onClick={() => go("booking")}
-            className="h-10 rounded-xl bg-qing-ink text-[13px] font-semibold text-qing-card font-song"
+            className="h-10 whitespace-nowrap rounded-xl bg-qing-ink text-[12px] font-semibold text-qing-card transition active:scale-[0.98] font-song"
           >
             預約試課
           </button>
@@ -502,22 +515,22 @@ function CourseGridCard({ course, go }: { course: Course; go: (page: Page) => vo
 
 function CoursesPage({ go }: { go: (page: Page) => void }) {
   return (
-    <div className="px-5 pt-8">
+    <div className="px-5 pt-6">
       <PageHeading
         title="精品課程"
         subtitle="從一筆一畫開始，為孩子建立審美與專注。"
       />
-      <div className="mt-6 grid grid-cols-2 gap-4">
+      <div className="mt-5 grid grid-cols-2 gap-3.5">
         {courses.map((course) => (
           <CourseGridCard key={course.title} course={course} go={go} />
         ))}
       </div>
-      <div className="relative mt-7 overflow-hidden rounded-[26px] border border-qing-ink/10 bg-qing-card/76 p-5 shadow-soft-ink">
+      <div className="relative mt-6 overflow-hidden rounded-[26px] border border-white/65 bg-qing-card/70 p-5 shadow-[0_14px_34px_rgba(53,89,68,0.11)] backdrop-blur">
         <BambooWash className="-right-6 bottom-0 h-[120px] w-[160px]" />
-        <h3 className="relative font-song text-[22px] font-bold tracking-[0.05em] text-qing-text">
+        <h3 className="relative font-song text-[20px] font-semibold tracking-[0.05em] text-qing-text">
           不知道孩子適合哪一門？
         </h3>
-        <p className="relative mt-2 font-song text-[15px] leading-7 text-qing-text/70">
+        <p className="relative mt-2 font-song text-[14px] leading-7 text-qing-text/66">
           問問 AI 書畫顧問，先了解孩子的年齡、基礎與興趣方向。
         </p>
         <PrimaryButton onClick={() => go("ai")} className="relative mt-4 w-full">
@@ -531,18 +544,18 @@ function CoursesPage({ go }: { go: (page: Page) => void }) {
 
 function PageHeading({ title, subtitle }: { title: string; subtitle: string }) {
   return (
-    <div className="relative overflow-hidden rounded-[28px] border border-white/65 bg-qing-card/58 px-5 py-6 shadow-[0_14px_32px_rgba(53,89,68,0.12)]">
-      <InkLandscape className="-right-8 -top-10 h-[180px] w-[230px] opacity-50" />
+    <div className="relative overflow-hidden rounded-[26px] border border-white/70 bg-qing-card/55 px-5 py-5 shadow-[0_12px_30px_rgba(53,89,68,0.10)] backdrop-blur">
+      <InkLandscape className="-right-10 -top-12 h-[176px] w-[230px] opacity-42" />
       <div className="relative">
-        <h1 className="font-song text-[31px] font-bold tracking-[0.08em] text-qing-text">
+        <h1 className="font-song text-[25px] font-semibold tracking-[0.07em] text-qing-text">
           {title}
         </h1>
-        <div className="mt-3 flex w-[120px] items-center gap-3">
+        <div className="mt-3 flex w-[108px] items-center gap-3">
           <span className="h-px flex-1 bg-qing-text/20" />
           <span className="h-2 w-2 rounded-full border border-qing-cinnabar bg-qing-card" />
           <span className="h-px flex-1 bg-qing-text/20" />
         </div>
-        <p className="mt-4 max-w-[270px] font-song text-[15px] leading-7 text-qing-text/72">
+        <p className="mt-3.5 max-w-[270px] font-song text-[14px] leading-7 text-qing-text/66">
           {subtitle}
         </p>
       </div>
@@ -573,12 +586,12 @@ function AiPage() {
   }
 
   return (
-    <div className="px-5 pt-8">
+    <div className="px-5 pt-6">
       <PageHeading
         title="AI 書畫顧問"
         subtitle="24小時解答課程、試課與報名疑問。"
       />
-      <div className="mt-6 space-y-4 pb-[104px]">
+      <div className="mt-5 space-y-3.5 pb-[104px]">
         {messages.map((message, index) => (
           <div
             key={`${message.role}-${index}`}
@@ -586,7 +599,7 @@ function AiPage() {
           >
             <div
               className={cn(
-                "max-w-[82%] rounded-[22px] px-4 py-3 font-song text-[15px] leading-7 shadow-[0_10px_24px_rgba(53,89,68,0.1)]",
+                "max-w-[84%] rounded-[22px] px-4 py-3 font-song text-[14px] leading-7 shadow-[0_10px_24px_rgba(53,89,68,0.09)]",
                 message.role === "user"
                   ? "rounded-br-md bg-qing-ink text-qing-card"
                   : "rounded-bl-md border border-qing-ink/10 bg-qing-card text-qing-text/78",
@@ -602,30 +615,30 @@ function AiPage() {
               key={question}
               type="button"
               onClick={() => sendMessage(question)}
-              className="rounded-2xl border border-qing-ink/10 bg-qing-card/75 px-3 py-3 text-left font-song text-[14px] leading-5 text-qing-text/80 shadow-[0_8px_18px_rgba(53,89,68,0.08)]"
+              className="rounded-2xl border border-white/65 bg-qing-card/70 px-3 py-3 text-left font-song text-[13px] leading-5 text-qing-text/72 shadow-[0_8px_18px_rgba(53,89,68,0.07)] transition active:scale-[0.98]"
             >
               {question}
             </button>
           ))}
         </div>
       </div>
-      <div className="fixed bottom-[76px] left-1/2 z-40 w-full max-w-[430px] -translate-x-1/2 bg-gradient-to-t from-qing-paper via-qing-paper to-qing-paper/0 px-5 pb-3 pt-8">
+      <div className="fixed bottom-[calc(70px+env(safe-area-inset-bottom))] left-1/2 z-40 w-full max-w-[390px] -translate-x-1/2 bg-gradient-to-t from-qing-paper via-qing-paper to-qing-paper/0 px-5 pb-3 pt-8">
         <form
           onSubmit={(event) => {
             event.preventDefault();
             sendMessage(input);
           }}
-          className="flex gap-2 rounded-[22px] border border-qing-ink/10 bg-qing-card/92 p-2 shadow-[0_12px_28px_rgba(53,89,68,0.14)] backdrop-blur"
+          className="flex gap-2 rounded-[22px] border border-white/70 bg-qing-card/90 p-2 shadow-[0_12px_28px_rgba(53,89,68,0.13)] backdrop-blur-xl"
         >
           <input
             value={input}
             onChange={(event) => setInput(event.target.value)}
             placeholder="請輸入想了解的問題"
-            className="min-w-0 flex-1 bg-transparent px-3 font-song text-[15px] text-qing-text outline-none placeholder:text-qing-muted/75"
+            className="min-w-0 flex-1 bg-transparent px-3 font-song text-[14px] text-qing-text outline-none placeholder:text-qing-muted/68"
           />
           <button
             type="submit"
-            className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-qing-ink text-qing-card"
+            className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-qing-ink text-qing-card transition active:scale-[0.96]"
             aria-label="發送"
           >
             <Send size={19} />
@@ -662,7 +675,7 @@ function Field({
         value={value}
         onChange={(event) => onChange(event.target.value)}
         placeholder={placeholder}
-        className="mt-2 h-12 w-full rounded-2xl border border-qing-ink/10 bg-qing-card/82 px-4 font-song text-[15px] text-qing-text outline-none transition placeholder:text-qing-muted/62 focus:border-qing-ink/40 focus:ring-4 focus:ring-qing-ink/8"
+        className="mt-2 h-[52px] w-full rounded-2xl border border-qing-ink/10 bg-qing-card/82 px-4 font-song text-[14px] text-qing-text outline-none transition placeholder:text-qing-muted/62 focus:border-qing-ink/40 focus:ring-4 focus:ring-qing-ink/8"
       />
     </label>
   );
@@ -709,19 +722,19 @@ function BookingPage({
 
   if (submitted) {
     return (
-      <div className="px-5 pt-8">
-        <div className="relative overflow-hidden rounded-[30px] border border-qing-ink/10 bg-qing-card/78 p-6 text-center shadow-soft-ink">
+      <div className="px-5 pt-6">
+        <div className="relative overflow-hidden rounded-[28px] border border-white/70 bg-qing-card/78 p-5 text-center shadow-[0_14px_34px_rgba(53,89,68,0.12)] backdrop-blur">
           <InkLandscape className="-right-10 bottom-0 h-[170px] w-[230px] opacity-50" />
           <div className="relative mx-auto grid h-16 w-16 place-items-center rounded-full bg-qing-ink/10 text-qing-ink">
             <CheckCircle2 size={36} />
           </div>
-          <h1 className="relative mt-5 font-song text-[30px] font-bold tracking-[0.08em] text-qing-text">
+          <h1 className="relative mt-5 font-song text-[25px] font-semibold tracking-[0.08em] text-qing-text">
             報名成功
           </h1>
-          <p className="relative mt-3 font-song text-[16px] leading-8 text-qing-text/72">
+          <p className="relative mt-3 font-song text-[14px] leading-7 text-qing-text/68">
             請添加青越書畫報名老師微信
           </p>
-          <div className="relative mt-5 rounded-2xl border border-qing-cinnabar/20 bg-qing-cinnabar/7 px-4 py-3 font-song text-[20px] font-bold tracking-[0.08em] text-qing-cinnabar">
+          <div className="relative mt-5 rounded-2xl border border-qing-cinnabar/20 bg-qing-cinnabar/7 px-4 py-3 font-song text-[18px] font-semibold tracking-[0.08em] text-qing-cinnabar">
             微信號：{WECHAT_ID}
           </div>
           <div className="relative mt-5 grid grid-cols-2 gap-3">
@@ -739,14 +752,14 @@ function BookingPage({
   }
 
   return (
-    <div className="px-5 pt-8">
+      <div className="px-5 pt-6">
       <PageHeading
         title="預約藝術試課"
         subtitle="留下信息，老師會為您安排適合孩子的課程。"
       />
       <form
         onSubmit={handleSubmit}
-        className="mt-6 space-y-4 rounded-[28px] border border-qing-ink/10 bg-qing-card/75 p-5 shadow-soft-ink"
+        className="mt-5 space-y-4 rounded-[28px] border border-white/70 bg-qing-card/72 p-5 shadow-[0_14px_34px_rgba(53,89,68,0.11)] backdrop-blur"
       >
         <Field label="學生姓名" value={form.studentName} onChange={(value) => update("studentName", value)} placeholder="請填寫學生姓名" required />
         <Field label="年齡" value={form.age} onChange={(value) => update("age", value)} placeholder="例如：7歲" required />
@@ -759,7 +772,7 @@ function BookingPage({
           <select
             value={form.course}
             onChange={(event) => update("course", event.target.value)}
-            className="mt-2 h-12 w-full rounded-2xl border border-qing-ink/10 bg-qing-card/82 px-4 font-song text-[15px] text-qing-text outline-none focus:border-qing-ink/40 focus:ring-4 focus:ring-qing-ink/8"
+            className="mt-2 h-[52px] w-full rounded-2xl border border-qing-ink/10 bg-qing-card/82 px-4 font-song text-[14px] text-qing-text outline-none focus:border-qing-ink/40 focus:ring-4 focus:ring-qing-ink/8"
           >
             <option value="">請選擇課程</option>
             {courses.map((course) => (
@@ -778,7 +791,7 @@ function BookingPage({
             value={form.note}
             onChange={(event) => update("note", event.target.value)}
             placeholder="可補充孩子基礎、學習目標等"
-            className="mt-2 min-h-24 w-full resize-none rounded-2xl border border-qing-ink/10 bg-qing-card/82 px-4 py-3 font-song text-[15px] leading-6 text-qing-text outline-none placeholder:text-qing-muted/62 focus:border-qing-ink/40 focus:ring-4 focus:ring-qing-ink/8"
+            className="mt-2 min-h-24 w-full resize-none rounded-2xl border border-qing-ink/10 bg-qing-card/82 px-4 py-3 font-song text-[14px] leading-6 text-qing-text outline-none placeholder:text-qing-muted/62 focus:border-qing-ink/40 focus:ring-4 focus:ring-qing-ink/8"
           />
         </label>
         {error && (
@@ -808,10 +821,10 @@ function InfoRow({ label, value }: { label: string; value: string }) {
 
 function ProfilePage({ booking, go }: { booking: BookingForm | null; go: (page: Page) => void }) {
   return (
-    <div className="px-5 pt-8">
+    <div className="px-5 pt-6">
       <PageHeading title="我的預約" subtitle="查看最近一次報名信息與老師聯繫方式。" />
-      <section className="mt-6 rounded-[28px] border border-qing-ink/10 bg-qing-card/75 p-5 shadow-soft-ink">
-        <h2 className="font-song text-[23px] font-bold tracking-[0.06em] text-qing-text">
+      <section className="mt-5 rounded-[28px] border border-white/70 bg-qing-card/72 p-5 shadow-[0_14px_34px_rgba(53,89,68,0.11)] backdrop-blur">
+        <h2 className="font-song text-[20px] font-semibold tracking-[0.06em] text-qing-text">
           最近報名信息
         </h2>
         {booking ? (
@@ -825,7 +838,7 @@ function ProfilePage({ booking, go }: { booking: BookingForm | null; go: (page: 
             {booking.note && <InfoRow label="備註" value={booking.note} />}
           </div>
         ) : (
-          <div className="mt-4 rounded-[22px] bg-qing-ink/7 px-4 py-5 text-center font-song text-[15px] text-qing-muted">
+          <div className="mt-4 rounded-[22px] bg-qing-ink/7 px-4 py-5 text-center font-song text-[14px] text-qing-muted">
             暫未提交報名信息
             <PrimaryButton onClick={() => go("booking")} className="mt-4 w-full">
               去預約試課
@@ -834,14 +847,14 @@ function ProfilePage({ booking, go }: { booking: BookingForm | null; go: (page: 
         )}
       </section>
 
-      <section className="relative mt-5 overflow-hidden rounded-[28px] border border-qing-cinnabar/15 bg-qing-card/75 p-5 shadow-soft-ink">
+      <section className="relative mt-5 overflow-hidden rounded-[28px] border border-qing-cinnabar/15 bg-qing-card/72 p-5 shadow-[0_14px_34px_rgba(53,89,68,0.11)] backdrop-blur">
         <BambooWash className="-right-7 bottom-0 h-[120px] w-[160px]" />
-        <h2 className="relative font-song text-[23px] font-bold tracking-[0.06em] text-qing-text">
+        <h2 className="relative font-song text-[20px] font-semibold tracking-[0.06em] text-qing-text">
           老師微信卡片
         </h2>
-        <div className="relative mt-3 space-y-2 font-song text-[15px] text-qing-text/78">
+        <div className="relative mt-3 space-y-2 font-song text-[14px] text-qing-text/72">
           <p>老師：青越書畫報名老師</p>
-          <p className="text-[19px] font-bold tracking-[0.08em] text-qing-cinnabar">
+          <p className="text-[18px] font-semibold tracking-[0.08em] text-qing-cinnabar">
             微信號：{WECHAT_ID}
           </p>
         </div>
@@ -851,8 +864,8 @@ function ProfilePage({ booking, go }: { booking: BookingForm | null; go: (page: 
         </PrimaryButton>
       </section>
 
-      <section className="mt-5 rounded-[28px] border border-qing-ink/10 bg-qing-card/75 p-5 shadow-soft-ink">
-        <h2 className="font-song text-[23px] font-bold tracking-[0.06em] text-qing-text">
+      <section className="mt-5 rounded-[28px] border border-white/70 bg-qing-card/72 p-5 shadow-[0_14px_34px_rgba(53,89,68,0.11)] backdrop-blur">
+        <h2 className="font-song text-[20px] font-semibold tracking-[0.06em] text-qing-text">
           機構信息
         </h2>
         <div className="mt-3">
@@ -872,7 +885,7 @@ function ProfilePage({ booking, go }: { booking: BookingForm | null; go: (page: 
 
 function BottomNav({ page, go }: { page: Page; go: (page: Page) => void }) {
   return (
-    <nav className="fixed bottom-0 left-1/2 z-50 h-[76px] w-full max-w-[430px] -translate-x-1/2 border-t border-qing-ink/10 bg-qing-card/86 px-3 pb-[env(safe-area-inset-bottom)] pt-2 shadow-[0_-12px_32px_rgba(53,89,68,0.15)] backdrop-blur-xl">
+    <nav className="fixed bottom-0 left-1/2 z-50 h-[calc(70px+env(safe-area-inset-bottom))] w-full max-w-[390px] -translate-x-1/2 border-t border-white/70 bg-qing-card/88 px-3 pb-[env(safe-area-inset-bottom)] pt-1.5 shadow-[0_-10px_30px_rgba(53,89,68,0.13)] backdrop-blur-xl">
       <div className="grid h-full grid-cols-5">
         {navItems.map((item) => {
           const Icon = item.icon;
@@ -883,19 +896,21 @@ function BottomNav({ page, go }: { page: Page; go: (page: Page) => void }) {
               key={item.label}
               onClick={() => go(item.page)}
               className={cn(
-                "flex flex-col items-center justify-center gap-1 rounded-2xl text-[12px] transition font-song",
-                active ? "font-bold text-qing-ink" : "text-qing-muted",
+                "group flex flex-col items-center justify-center gap-0.5 rounded-2xl text-[11px] tracking-[0.02em] transition duration-200 ease-out active:scale-[0.96] font-song",
+                active ? "font-semibold text-qing-ink" : "text-qing-muted/78",
               )}
             >
               <span
                 className={cn(
-                  "grid h-8 w-8 place-items-center rounded-full transition",
-                  active && "bg-qing-ink/12 shadow-[0_6px_14px_rgba(53,89,68,0.12)]",
+                  "grid h-8 w-8 place-items-center rounded-full transition duration-200 group-hover:bg-qing-ink/6",
+                  active && "translate-y-[-1px] bg-[linear-gradient(145deg,rgba(53,89,68,0.16),rgba(53,89,68,0.06))] shadow-[0_7px_16px_rgba(53,89,68,0.13)] ring-1 ring-qing-ink/10",
                 )}
               >
-                <Icon size={20} strokeWidth={active ? 2.6 : 1.8} />
+                <Icon size={19} strokeWidth={active ? 2.35 : 1.75} />
               </span>
-              {item.label}
+              <span className={cn("leading-none transition", active && "translate-y-[-1px]")}>
+                {item.label}
+              </span>
             </button>
           );
         })}
@@ -931,7 +946,7 @@ export default function App() {
 
   return (
     <main className="min-h-screen bg-qing-paper text-qing-text font-song">
-      <div className="bottom-safe paper-texture relative mx-auto min-h-screen w-full max-w-[430px] overflow-hidden bg-qing-paper">
+      <div className="bottom-safe paper-texture relative mx-auto min-h-screen w-full max-w-[390px] overflow-hidden bg-qing-paper">
         <div className="pointer-events-none absolute -left-24 top-32 h-56 w-56 rounded-full bg-qing-ink/8 blur-3xl" />
         <div className="pointer-events-none absolute -right-24 top-[420px] h-56 w-56 rounded-full bg-qing-cinnabar/7 blur-3xl" />
         <Header />
