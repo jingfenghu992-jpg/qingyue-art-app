@@ -1,6 +1,6 @@
 # qingyue-art-app
 
-青越書畫 AI招生系統手機端 Web App。
+青越書畫智能招生系統手機端 Web App。
 
 ## 本地运行
 

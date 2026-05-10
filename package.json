@@ -2,7 +2,7 @@
   "name": "qingyue-art-app",
   "private": true,
   "version": "0.1.0",
-  "description": "青越書畫 AI招生系統手機端 Web App",
+  "description": "青越書畫智能招生系統手機端 Web App",
   "type": "module",
   "scripts": {
     "dev": "vite",
